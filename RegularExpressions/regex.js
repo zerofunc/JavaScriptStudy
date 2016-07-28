@@ -1,13 +1,18 @@
 var regex = {
-    r : function(str) {
-        var re = /\w+\s/g;
-        var str = "fee fi fo fum";
-        var myArray = str.match(re);
-        console.log(myArray);
+    isPhoneNumber: function (str) {
+        return regex.chk(/^\d{3}-\d{3,4}-\d{4}$/,str, "폰번호 형식이 아닙니다.");
+    },
+    chk: function (re, str, msg) {
+        if(!re.test(str)) {
+            alert(msg);
+            return false;
+        } else {
+            return true;
+        }
     }
 };
 
 
-var data = "zerofunc@naver.com"
+var data = "010-123-4567"
 
-regex.r(data);
+console.log(regex.isPhoneNumber(data));
